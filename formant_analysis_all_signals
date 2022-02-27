@@ -1,0 +1,110 @@
+clc;
+clear;
+ fs=44100;
+ 
+ 
+
+%%%%%%%%%% mammals %%%%%%%%%%%%%%%%%%%%%%
+%cats
+load('n_cats.mat')
+
+for i=1:40
+
+signal=n_cats{i};
+formants1a = formantsEstimation(signal,fs);
+formants4cats(:,i)=formants1a(1,1:4);
+
+end
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%dogs
+load('n_dogs.mat')
+for i=1:40
+
+signal=n_dogs{i};
+formants2a = formantsEstimation(signal,fs);
+formants4dogs(:,i)=formants2a(1,1:4);
+
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%pigs
+ load('n_pigs.mat')
+ for i=1:40
+   
+signal=n_pigs{i};
+formants3a = formantsEstimation(signal,fs);
+formants4pigs(:,i)=formants3a(1,1:4);
+%40
+ end
+formants4pigs(1,40)=mean(formants4pigs(1,:));
+formants4pigs(2,40)=mean(formants4pigs(2,:));
+formants4pigs(3,40)=mean(formants4pigs(3,:));
+formants4pigs(4,40)=mean(formants4pigs(4,:));
+
+
+%%%%%%%%%
+
+%cows
+load('n_cows.mat')
+for i=1:40
+   
+signal=n_cows{i};
+formants4a = formantsEstimation(signal,fs);
+formants4cows(:,i)=formants4a(1,1:4);
+%40
+ end
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+%sheep
+load('n_sheeps.mat')
+for i=1:40
+   
+signal=n_sheeps{i};
+formants5a = formantsEstimation(signal,fs);
+formants4sheeps(:,i)=formants5a(1,1:4);
+%40
+ end
+
+%%%%%%%%%% birds %%%%%%%%%%%%%%%%%%%%%%
+%roster
+load('n_rosters.mat')
+for i=1:40
+   
+signal=n_rosters{i};
+formants6a = formantsEstimation(signal,fs);
+formants4rosters(:,i)=formants6a(1,1:4);
+%40
+end
+%hens
+load('n_hens.mat')
+for i=1:40
+signal=n_hens{i};
+formants7a = formantsEstimation(signal,fs);
+formants4hens(:,i)=formants7a(1,1:4);
+%40
+end
+%crows
+for i=1:40
+signal=n_crows{i};
+formants8a = formantsEstimation(signal,fs);
+formants4crows(:,i)=formants8a(1,1:4);
+%40
+end
+%chirping_birds
+for i=1:40
+signal=n_chirping_birds{i};
+formants9a = formantsEstimation(signal,fs);
+formants4chirping_birds(:,i)=formants9a(1,1:4);
+%40
+end
+
+clear('formants1a','formants2a','formants3a','formants4a','formants5a','formants6a','formants7a','formants8a','formants9a','i');
+clear('m1','m2','m3','m4','m5','m6','m7','m8','m9');
+clear('s1','s2','s3','s4','s5','s6','s7','s8','s9');
