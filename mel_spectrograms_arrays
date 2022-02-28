@@ -1,9 +1,0 @@
-clear;
-clc;
-close all;
-load('n_chirping_birds.mat')
-fs = 44100;
-for i=1:40
-[S,cF,t]=melSpectrogram(n_chirping_birds{i},fs);
-S(:,:,i) = 10*log10(S+eps);
-end
